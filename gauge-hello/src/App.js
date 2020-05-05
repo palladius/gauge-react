@@ -14,7 +14,7 @@ function App() {
             <Gauge />
             </td>
             <td>
-            <Gauge value="50" label="seno"  units="cm" color1="blue" color1="green" circleColor="orange" />
+            <Gauge value="50" label="seno"  units="cm" color1="blue" color2="green" circleColor="orange" />
             </td>
             <td>
             <Gauge value="62" label="vita"  units="cm" 
