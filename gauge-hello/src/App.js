@@ -9,10 +9,23 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
           <p>
-          Sito della madonna: <code>https://wattenberger.com/blog/gauge</code>
+          Sito della madonna: <code>https://wattenberger.com/blog/gauge</code>, 
           da cui traggo ispirazione come dall'uomo del Giappone
         </p>
-        <Gauge/>
+        <h2>Parametri ideali</h2>
+        <table>
+          <tr>
+          <td>
+            <Gauge value="90" label="seno"  units="cm" />
+            </td>
+            <td>
+            <Gauge value="62" label="vita"  units="cm"  />
+            </td>
+            <td>
+            <Gauge value="90"  label="fianchi" units="cm" />
+            </td>
+          </tr>
+        </table>
        
       </header>
     </div>
