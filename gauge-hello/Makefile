@@ -12,3 +12,8 @@ install:
 run:
 	npm start
 
+run-prod:
+	# build first
+	npm run build
+	yarn global add serve
+	serve -s build
