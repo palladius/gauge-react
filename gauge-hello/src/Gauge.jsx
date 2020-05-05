@@ -1,5 +1,6 @@
 import React from "react"
 import { arc } from "d3-shape"
+import { scaleLinear } from "d3-scale"
 
 const Gauge = ({
   value=50,
@@ -16,20 +17,76 @@ const Gauge = ({
     .cornerRadius(1)
     ()
 
+  const percentScale = scaleLinear()
+    .domain([min, max])
+    .range([0, 1])
+  const percent = percentScale(value)
+
+  const angleScale = scaleLinear()
+    .domain([0, 1])
+    .range([-Math.PI / 2, Math.PI / 2])
+    .clamp(true)
+
+  const angle = angleScale(percent)
+
+  const filledArc = arc()
+    .innerRadius(0.65)
+    .outerRadius(1)
+    .startAngle(-Math.PI / 2)
+    .endAngle(angle)
+    .cornerRadius(1)
+    ()
+
+  const colorScale = scaleLinear()
+    .domain([0, 1])
+    .range(["#dbdbe7", "#4834d4"])
+
+  const gradientSteps = colorScale.ticks(10)
+    .map(value => colorScale(value))
+
   return (
     <div>
-      <svg
+      <svg style={{overflow: "visible"}}
         width="9em"
         viewBox={[
           -1, -1,
           2, 1,
-        ].join(" ")}
-        style={{
-          border: "1px solid pink"
-        }}>
+        ].join(" ")}>
+        <defs>
+          <linearGradient
+            id="Gauge__gradient"
+            gradientUnits="userSpaceOnUse"
+            x1="-1"
+            x2="1"
+            y2="0">
+            {gradientSteps.map((color, index) => (
+              <stop
+                key={color}
+                stopColor={color}
+                offset={`${
+                  index
+                  / (gradientSteps.length - 1)
+                }`}
+              />
+            ))}
+          </linearGradient>
+        </defs>
+        <path
+          d={backgroundArc}
+          fill="#dbdbe7"
+        />
+        <path
+          d={filledArc}
+          fill="url(#Gauge__gradient)"
+        />
       </svg>
     </div>
   )
 }
+
+const getCoordsOnArc = (angle, offset=10) => [
+  Math.cos(angle - (Math.PI / 2)) * offset,
+  Math.sin(angle - (Math.PI / 2)) * offset,
+]
 
 export default Gauge
