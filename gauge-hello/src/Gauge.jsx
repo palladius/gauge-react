@@ -7,11 +7,10 @@ const Gauge = ({
   value=50,
   min=0,
   max=100,
-  color1="#dbdbe7", // color range 1 (["#dbdbe7", "#4834d4"])
-  color2="#4834d4", // color range 2
+  colorRangeStart="#dbdbe7", // color range 1 dflt: "#dbdbe7"
+  colorRangeEnd="#4834d4", // color range 2 dflt: 4834d4
   backgroundColor="#dbdbe7", // bkg Fill
   arrowColor="#6a6a85", // fill color for arrow
-  circleColor="#2c3e50",
   label,
   units,
   unitsAndLabelColor="#8b8ba7",
@@ -46,7 +45,10 @@ const Gauge = ({
 
   const colorScale = scaleLinear()
     .domain([0, 1])
-    .range([color1, color2])
+    .range([
+      colorRangeStart, 
+      colorRangeEnd
+    ])
     
   const gradientSteps = colorScale.ticks(10)
     .map(value => colorScale(value))
@@ -104,7 +106,7 @@ const Gauge = ({
           cx={markerLocation[0]}
           cy={markerLocation[1]}
           r="0.2"
-          stroke={circleColor}
+          stroke={colorRangeEnd}
           strokeWidth="0.01"
           fill={colorScale(percent)}
         />
@@ -129,7 +131,7 @@ const Gauge = ({
 
       {!!label && (
         <div style={{
-          color: {unitsAndLabelColor},
+          color: unitsAndLabelColor, // {unitsAndLabelColor},
           marginTop: "0.6em",
           fontSize: "1.3em",
           lineHeight: "1.3em",
@@ -141,7 +143,7 @@ const Gauge = ({
 
       {!!units && (
         <div style={{
-          color: {unitsAndLabelColor},
+          color: unitsAndLabelColor,
           lineHeight: "1.3em",
           fontWeight: "300",
         }}>

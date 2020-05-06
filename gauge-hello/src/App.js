@@ -11,23 +11,29 @@ function App() {
         <table>
           <tr>
           <td>
-            <Gauge />
+            <Gauge               colorRangeStart="black"  />
             </td>
             <td>
-            <Gauge value="50" label="seno"  units="cm" color1="blue" color2="green" circleColor="orange" />
+            <Gauge value="90" label="seno"  units="cm" 
+              colorRangeStart="blue" 
+              colorRangeEnd="green" 
+            />
             </td>
             <td>
             <Gauge value="62" label="vita"  units="cm" 
-              backgroundColor="yellow" // a destra 
-              color1="azure" 
-              color2="blue" // color range 2
-              circleColor="green" // inutile
+              //backgroundColor="black" // a destra 
+              colorRangeStart="#aaffaa" // light green
+              colorRangeEnd="#00aa00" // dark green
               unitsAndLabelColor="red" 
               arrowColor="teal" // fill color for arrow
             />
             </td>
             <td>
-            <Gauge value="90"  label="fianchi" units="cm"color2="green" arrowColor="yellow" />
+            <Gauge value="90"  label="fianchi" units="cm" 
+              colorRangeStart="white" 
+              colorRangeEnd="red" 
+              arrowColor="yellow" 
+            />
             </td>
           </tr>
         </table>
