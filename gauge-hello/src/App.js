@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h2>Parametri ideali</h2>
+        <h2>Gauge test</h2>
         <table>
           <tr>
           <td>
@@ -39,8 +39,10 @@ function App() {
         </table>
         <img src={logo} className="App-logo" alt="logo" />
           <p>
-          Sito della madonna: <code>https://wattenberger.com/blog/gauge</code>, 
-          da cui traggo ispirazione come dall'uomo del Giappone
+          <code>https://wattenberger.com/blog/gauge</code>
+          </p>
+          <p>
+          sito da cui traggo ispirazione come dall'uomo del Giappone
         </p>
        
       </header>
