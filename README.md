@@ -1,4 +1,6 @@
-# About
+This is a collection of Node.js (React) mini sites - until I learn to put everything together into a REAL site.
+
+# gauge-hello
 
 Taken from: https://wattenberger.com/blog/gauge
 
